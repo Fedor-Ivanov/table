@@ -1,70 +1,90 @@
-# Getting Started with Create React App
+# Table component
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Demo
 
-## Available Scripts
+Install the required modules:
 
-In the project directory, you can run:
+```sh
+$ npm install
+```
 
-### `npm start`
+Run dev server:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```sh
+$ npm run start
+```
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Component
 
-### `npm test`
+```jsx
+<Table
+  data={data}
+  oddRowBck={"red"}
+  evenRowBck={"blue"}
+  editableColor={"yellow"}
+  cellPadding={5}
+  onDelete={onDeleteTableRow}
+  onAddNewRow={onNewTableRow}
+  onUpdate={onUpdateTableRow}
+/>
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Props
 
-### `npm run build`
+#### data
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Takes an object with the following structure:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```js
+const data = {
+  headers: ["Id", "Name", "Surname", "City"],
+  rows: [
+    { id: "1", name: "Bernadine", surname: "Brakus", city: "Williamsontown" },
+    { id: "2", name: "Ewell", surname: "Ondricka", city: "Lake Almouth" },
+    { id: "3", name: "John", surname: "Welch", city: "Thompsonville" },
+    { id: "4", name: "Loyal", surname: "Lang", city: "Lindsaystad" },
+  ],
+};
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+#### oddRowBck
 
-### `npm run eject`
+Sets the color for odd rows in the table:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```js
+  oddRowBck={"red"}
+  oddRowBck={"#ff0000"}
+  oddRowBck={"rgb(255, 0, 0)"}
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+#### evenRowBck
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Sets the color for even rows in the table:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```js
+  evenRowBck={"blue"}
+  evenRowBck={"#0000ff"}
+  evenRowBck={"rgb(0, 0, 255)"}
+```
 
-## Learn More
+#### editableColor
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Sets the color for the editable row in the table:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```js
+  editableColor={"yellow"}
+  editableColor={"#ffff00"}
+  editableColor={"rgb(255, 255, 0)"}
+```
 
-### Code Splitting
+#### onDelete
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Function to remove row from the table
 
-### Analyzing the Bundle Size
+#### onAddNewRow
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Function to add a new row to the table
 
-### Making a Progressive Web App
+#### onUpdate
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Function to update data in a row
