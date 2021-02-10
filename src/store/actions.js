@@ -94,17 +94,3 @@ export const updateTableRow = (item) => async (dispatch) => {
     dispatch(loadingData(false));
   }
 };
-
-// export const THUNK_CLEAR_ROW = "THUNK_CLEAR_ROW";
-// export const clearTableRow = () => async (dispatch) => {
-//   dispatch(loadingData(true));
-//   try {
-//     Api.post().then((resp) => {
-//       dispatch(createRow(resp.data));
-//       dispatch(loadingData(false));
-//     });
-//   } catch (error) {
-//     console.log(error.response);
-//     dispatch(loadingData(false));
-//   }
-// };

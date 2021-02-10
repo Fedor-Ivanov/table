@@ -20,13 +20,7 @@ function Row({ item, onDelete, onUpdate, oddRowBck, evenRowBck, editableColor })
   }
 
   return (
-    <StyledTr
-      oddRowBck={oddRowBck}
-      evenRowBck={evenRowBck}
-      editableColor={editableColor}
-      editable={editMode}
-      key={`tr-${row.id}`}
-    >
+    <StyledTr oddRowBck={oddRowBck} evenRowBck={evenRowBck} editableColor={editableColor} editable={editMode}>
       {Object.entries(row).map(([key, value], index) => {
         return <EditableTd value={value} key={index} keyValue={key} editMode={editMode} onValueChange={onChange} />;
       })}

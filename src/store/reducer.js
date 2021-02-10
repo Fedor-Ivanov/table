@@ -23,7 +23,6 @@ function createRow(list, item) {
 const RootReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case ACTION_SET_DATA:
-      console.log("payload");
       return {
         ...state,
         rows: payload,
@@ -42,8 +41,6 @@ const RootReducer = (state = initialState, { type, payload }) => {
       };
 
     case ACTION_CREATE_ROW:
-      console.log(payload);
-
       return {
         ...state,
         rows: createRow(state.rows, payload),
