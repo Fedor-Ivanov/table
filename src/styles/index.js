@@ -2,8 +2,10 @@ import styled, { css } from "styled-components";
 
 export const TableWrapper = styled.div`
   display: flex;
-  margin: 30px;
+  padding: 30px;
+  max-height: 90vh;
   flex-direction: column;
+  overflow: auto;
 `;
 
 export const StyledTable = styled.table`
