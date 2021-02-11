@@ -2,12 +2,12 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import Loader from "./components/Loader";
 import Table from "./components/Table";
-import { getTableData, deleteTableRow, newTableRow, updateTableRow } from "./store/actions";
+import { getData, removeRow, addRow, updRow } from "./store/actions";
 import { TableWrapper } from "./styles";
 
-function App({ getTableData, data, isLoading, onDeleteTableRow, onNewTableRow, onUpdateTableRow }) {
+function App({ getData, data, isLoading, onDeleteTableRow, onNewTableRow, onUpdateTableRow }) {
   useEffect(() => {
-    getTableData();
+    getData();
   }, []);
 
   return (
@@ -41,10 +41,10 @@ function mapStateToProps(state) {
 }
 
 const mapDispatchToProps = {
-  getTableData: getTableData,
-  onDeleteTableRow: deleteTableRow,
-  onNewTableRow: newTableRow,
-  onUpdateTableRow: updateTableRow,
+  getData: getData,
+  onDeleteTableRow: removeRow,
+  onNewTableRow: addRow,
+  onUpdateTableRow: updRow,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

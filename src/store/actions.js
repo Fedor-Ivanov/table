@@ -1,5 +1,12 @@
 import Api from "../api";
 
+export const ACTION_GET_DATA = "ACTION_GET_DATA";
+export function getData() {
+  return {
+    type: ACTION_GET_DATA,
+  };
+}
+
 export const ACTION_SET_DATA = "ACTION_SET_DATA";
 export function setData(data) {
   return {
@@ -16,11 +23,26 @@ export function deleteRow(id) {
   };
 }
 
+export const ACTION_REMOVE_ROW = "ACTION_REMOVE_ROW";
+export function removeRow(id) {
+  return {
+    type: ACTION_REMOVE_ROW,
+    payload: id,
+  };
+}
+
 export const ACTION_CREATE_ROW = "ACTION_CREATE_ROW";
 export function createRow(row) {
   return {
     type: ACTION_CREATE_ROW,
     payload: row,
+  };
+}
+
+export const ACTION_ADD_ROW = "ACTION_ADD_ROW";
+export function addRow() {
+  return {
+    type: ACTION_ADD_ROW,
   };
 }
 
@@ -32,6 +54,14 @@ export function updateRow(row) {
   };
 }
 
+export const ACTION_UPD_ROW = "ACTION_UPD_ROW";
+export function updRow(row) {
+  return {
+    type: ACTION_UPD_ROW,
+    row: row,
+  };
+}
+
 export const ACTION_LOADING_DATA = "ACTION_LOADING_DATA";
 export function loadingData(isLoading) {
   return {
@@ -39,58 +69,3 @@ export function loadingData(isLoading) {
     payload: isLoading,
   };
 }
-
-export const THUNK_GET_TABLES = "THUNK_GET_TABLES";
-export const getTableData = () => async (dispatch) => {
-  dispatch(loadingData(true));
-  try {
-    const { data } = await Api.get();
-    dispatch(setData(data));
-    dispatch(loadingData(false));
-  } catch (error) {
-    console.log(error.response);
-    dispatch(loadingData(false));
-  }
-};
-
-export const THUNK_DELETE_ROW = "THUNK_DELETE_ROW";
-export const deleteTableRow = (id) => async (dispatch) => {
-  dispatch(loadingData(true));
-  try {
-    Api.delete(id).then((resp) => {
-      dispatch(deleteRow(resp.data.id));
-      dispatch(loadingData(false));
-    });
-  } catch (error) {
-    console.log(error.response);
-    dispatch(loadingData(false));
-  }
-};
-
-export const THUNK_CREATE_ROW = "THUNK_CREATE_ROW";
-export const newTableRow = () => async (dispatch) => {
-  dispatch(loadingData(true));
-  try {
-    Api.post("", { name: "", surname: "", city: "" }).then((resp) => {
-      dispatch(createRow(resp.data));
-      dispatch(loadingData(false));
-    });
-  } catch (error) {
-    console.log(error.response);
-    dispatch(loadingData(false));
-  }
-};
-
-export const THUNK_UPDATE_ROW = "THUNK_UPDATE_ROW";
-export const updateTableRow = (item) => async (dispatch) => {
-  dispatch(loadingData(true));
-  try {
-    Api.put(item.id, item).then((resp) => {
-      dispatch(updateRow(resp.data));
-      dispatch(loadingData(false));
-    });
-  } catch (error) {
-    console.log(error.response);
-    dispatch(loadingData(false));
-  }
-};
